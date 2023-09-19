@@ -3,13 +3,21 @@ import "@hotwired/turbo-rails"
 import "./controllers"
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Greeting from './greeting'
+import Greeting from './components/greeting'
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { store } from "./redux/store";
+import { Provider } from "react-redux";
 function App() {
-    const rootElement = document.getElementById("root");
-    const greeting = rootElement.getAttribute("greeting");
-
+    const router = createBrowserRouter([
+        {
+            path: '/',
+            element: <Greeting />,
+        },
+    ]);
     return (
-        <Greeting text={greeting} />
+        <Provider store={store}>
+            <RouterProvider router={router} />
+        </Provider>
     );
 }
 
