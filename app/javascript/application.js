@@ -1,14 +1,22 @@
 // // Entry point for the build script in your package.json
-// import "@hotwired/turbo-rails"
-// import "./controllers"
+import "@hotwired/turbo-rails"
+import "./controllers"
 import React from 'react';
 import ReactDOM from 'react-dom';
-
+import Greeting from './greeting'
 function App() {
-    return (<h1>Hello World!</h1>);
+    const rootElement = document.getElementById("root");
+    const greeting = rootElement.getAttribute("greeting");
+
+    return (
+        <Greeting text={greeting} />
+    );
 }
 
-ReactDOM.render(
-    <App />,
-    document.getElementById('root'),
-);
+
+document.addEventListener("DOMContentLoaded", () => {
+    ReactDOM.render(
+        <App />,
+        document.getElementById('root')
+    );
+});
